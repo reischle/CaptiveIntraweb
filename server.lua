@@ -22,11 +22,18 @@ srv:listen(80,function(conn)
         print(method, url, vars)                          
     end
 
+	-- some ugly magic for Apple IOS Devices
+	if string.find(url, "/") ~= nil then
+	 --print ("Slash found")
+	 local invurl=string.reverse(url)
+	 local a,b=string.find(invurl, "/", 1)
+	 url=string.sub(url, string.len(url)-(a-2))
+	 --print ("Neue URL= " .. url)
+	end
+		
 	if string.len(url)>= 25 then
 		url = string.sub (url,1,25)
-		conn:send("HTTP/1.1 404 file not found")
-		print ("cut down URL")
-		return
+	--	print ("cut down URL")
 	end
 	
    
@@ -52,13 +59,13 @@ srv:listen(80,function(conn)
 	for _,v in pairs(a) do
 		if v == url then
 			foundmatch=1
-			print ("Found " .. v)
+			-- print ("Found " .. v)
 			break
 		end
 	end
 
 if foundmatch == 0 then
-	print ("Found no match, setting index")
+	-- print ("Found no match, setting index")
     url="index.htm"
 end
 	
