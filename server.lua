@@ -19,7 +19,7 @@ srv:listen(80,function(conn)
   
     if Status==0 then
         _, _, method, url, vars = string.find(payload, "([A-Z]+) /([^?]*)%??(.*) HTTP")
-        print(method, url, vars)                          
+        -- print(method, url, vars)                          
     end
 
 	-- some ugly magic for Apple IOS Devices
