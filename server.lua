@@ -44,8 +44,23 @@ srv:listen(80,function(conn)
         return
     end    
 
+	
     conn:send("HTTP/1.1 200 OK\r\n\r\n")
 
+	if url=="status.htm" then
+	file.open("counter.txt", "r")
+    local cnt=(file.read('\r'))
+    file.close()
+	conn:send("<html><body><h1>System status</h1>")
+	conn:send("<p>Index page has been viewed " .. cnt .. " times.</p>")
+	conn:send("<p>Free memory: " .. node.heap() .. " Bytes</p>")
+	conn:send("<p>System uptime: " .. tmr.now()/1000000 .. " seconds</p>")
+    conn:send("</body></html>")
+	conn:close()
+	print ("<p>Indexpage has been viewed " .. cnt .. " times.</p>")
+	return
+    end
+	
 	if url==nil then
 		url="index.htm"
 	end
@@ -55,7 +70,7 @@ srv:listen(80,function(conn)
 	end
 	
 	local foundmatch = 0
-	local a = {'wumpus.htm','index.htm','about.htm','ttt.htm','instruct.htm'}
+	local a = {'wumpus.htm','index.htm','about.htm','ttt.htm','instruct.htm','status.htm'}
 	for _,v in pairs(a) do
 		if v == url then
 			foundmatch=1
@@ -68,17 +83,24 @@ if foundmatch == 0 then
 	-- print ("Found no match, setting index")
     url="index.htm"
 end
+
 	
+	if url == "index.htm" then
+	  --increment the counter file
+	  print ("Index Called!")
+	  counter()
+	end
+		
     -- it wants a file in particular
     if url~="" then
         DataToGet = 0
         return
     end    
 
-    conn:send("<html><body><h1>NodeMCU IDE</h1>")
+   -- conn:send("<html><body><h1>NodeMCU IDE</h1>")
   
     
-    conn:send("</body></html>")
+   -- conn:send("</body></html>")
 
   end)
   
@@ -102,4 +124,18 @@ end
     conn:close() 
   end)
 end)
+
+function counter()
+file.open("counter.txt", "r")
+    local cnt=(file.read('\r'))
+    file.close()
+cnt=cnt+1
+    file.open("counter.txt", "w+")
+    file.write(cnt)
+    file.flush()
+    file.close()
+end
+
+	
 print("listening, free:", node.heap())
+
