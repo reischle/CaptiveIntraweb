@@ -85,9 +85,9 @@ if foundmatch == 0 then
 end
 
 	
-	if url == "index.htm" then
+	if url == "wumpus.htm" or url == "ttt.htm""index.htm" then
 	  --increment the counter file
-	  print ("Index Called!")
+	  --print ("game called!")
 	  counter()
 	end
 		
