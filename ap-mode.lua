@@ -1,4 +1,4 @@
  wifi.setmode(wifi.SOFTAP)
  cfg={}
-     cfg.ssid="SpielMitMir"
+     cfg.ssid="PlayWithMe"
      wifi.ap.config(cfg)
