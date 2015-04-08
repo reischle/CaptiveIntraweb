@@ -52,12 +52,12 @@ srv:listen(80,function(conn)
     local cnt=(file.read('\r'))
     file.close()
 	conn:send("<html><body><h1>System status</h1>")
-	conn:send("<p>Index page has been viewed " .. cnt .. " times.</p>")
-	conn:send("<p>Free memory: " .. node.heap() .. " Bytes</p>")
-	conn:send("<p>System uptime: " .. tmr.now()/1000000 .. " seconds</p>")
+	conn:send("<p>Die Spiele wurden " .. cnt .. " mal aufgerufen.</p>")
+	conn:send("<p>Freier Arbeitsspeicher: " .. node.heap() .. " Bytes</p>")
+	conn:send("<p>System Laufzeit: " .. tmr.now()/1000000 .. " seconds</p>")
     conn:send("</body></html>")
 	conn:close()
-	print ("<p>Indexpage has been viewed " .. cnt .. " times.</p>")
+	-- print ("<p>games have been viewed " .. cnt .. " times.</p>")
 	return
     end
 	
