@@ -40,12 +40,15 @@ body {
 	left:415px;
 }
 </style>
+
+
+
 <script>
 // Wumpus
 function Wumpus(point) {
 	var gp = new GamePiece();
 	gp.evade = Wumpus_evade;
-	return gp.construct("Wumpus",point,"Du riechst das Wumpus","Du wurdest vom Wumpus gefressen!");	
+	return gp.construct("Wumpus",point,"You smell a wumpus","You have been eaten by a wumpus!");	
 }
 
 function Wumpus_evade(dir) {
@@ -60,13 +63,13 @@ function Wumpus_evade(dir) {
 // Bats
 function Bats(point) {
 	var gp = new GamePiece();
-	return gp.construct("Bats",point,"Du hörst Geflatter","Die Fledermäuse haben Dich davongetragen!");	
+	return gp.construct("Bats",point,"You hear flapping","Bats carried you away!");	
 }
 
 // Pit
 function Pit(point) {
 	var gp = new GamePiece();
-	return gp.construct("Pit",point,"Du fühlst einen Luftzug","Du bist in eine Grube gefallen!");	
+	return gp.construct("Pit",point,"You feel a breeze","You fell down a pit!");	
 }
 
 // Hero
@@ -79,8 +82,9 @@ function Hero(point) {
 // Arrow
 function Arrow(point) {
 	var gp = new GamePiece();
-	return gp.construct("Arrow",point,"","Du hast einen Pfeil gefunden!");
+	return gp.construct("Arrow",point,"","You found an arrow!");
 }
+
 
 /* Game Pieces include hero, wumpus, pit, bats, and arrow. They all share certain properties, i.e. a location point on the game board */
 function GamePiece() {
@@ -377,15 +381,15 @@ function shoot(dir) {
 		arrow.construct("arrow",{"x":game.hero.x,"y":game.hero.y},"","");
 		arrow.move(dir);
 		if ( arrow.isTouching(game.wumpus) ) {
-			game.feedback.addMessage("Du hast gewonnen!!!");
+			game.feedback.addMessage("You WIN!!!");
 			game.win();
 		} else {
 			game.wumpus.evade(randomDirection());
 			move("standstill");
-			game.feedback.addMessage("Mist! Verfehlt!");
+			game.feedback.addMessage("Drats! Missed!");
 		}
 	} else {
-		game.feedback.addMessage("Keine Pfeile mehr!");	
+		game.feedback.addMessage("Out of arrows!");	
 	}
 
 }
@@ -489,10 +493,10 @@ function buildBoard(x,y) {
   </table>
 </form>
 <h2>Über das Spiel:</h2>
-<p>Das Originalspiel -Hunt the Wumpus- wurde 1972 von Gregory Yob geschrieben.</p>
-<p>Der Code für dieses Spiel stammt von Chris@osric.com</a>.</p>
-<p>Ein -public guerrillatech art- Projekt</p>
-<a href="index.htm">Zurück</a>
+<p>The original game -Hunt the Wumpus- was written by Gregory Yob in 1972.</p>
+<p>Code for this game by Chris@osric.com</a>.</p>
+<p>A -KEINE GEFAHR- Projekt</p>
+<a href="index.htm">BACK</a>
 
 <script type="text/javascript">
 	var game = new Game;
