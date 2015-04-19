@@ -70,7 +70,7 @@ srv:listen(80,function(conn)
 	end
 	
 	local foundmatch = 0
-	local a = {'wumpus.htm','index.htm','about.htm','ttt.htm','instruct.htm','status.htm'}
+	local a = {'wumpus.htm','index.htm','about.htm','ttt.htm','instruct.htm','status.htm','kg-small.png'}
 	for _,v in pairs(a) do
 		if v == url then
 			foundmatch=1
