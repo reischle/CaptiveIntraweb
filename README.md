@@ -2,7 +2,7 @@
 A very simple, esp8266 based standalone captive-portal-like, access point serving local files only.
 This turns an ESP-01 module into an autonomous WiFi throwie. 
 
-As the project is nearing its first release, we have working code and html files in the dev-tree. The German branch will be somewhat ahead of the dev tree, but both are currently working well enough to try.
+<b>As the project is nearing its first release, we have working code and html files in the dev-tree. The German branch will be somewhat ahead of the dev tree, but both are currently working well enough to try.</b>
 
 Description:
 This project (apart from the code here) only requires an ESP-01 module, slightly modified NodeMCU firmware and a (rechargeable?) battery.
