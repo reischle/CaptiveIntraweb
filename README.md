@@ -7,7 +7,7 @@ This turns an ESP-01 module into an autonomous WiFi throwie.
 Description:
 This project (apart from the code here) only requires an ESP-01 module, slightly modified NodeMCU firmware and a (rechargeable?) battery.
 Once running, the ESP-01 acts as an access-point, offering unencrypted access.
-I will not redestribute the NodeMCU firmware because of potential rights issues. (Binary blobs in SDK) The relevant change ist to activate the DNS feature in the DHCP settings, so the client uses the module as DNS server.
+I will not redistribute the NodeMCU firmware because of potential rights issues. (Binary blobs in SDK) The relevant change ist to activate the DNS feature in the DHCP settings, so the client uses the module as DNS server.
 
 All DNS-requests are answered with the module's IP (192.168.4.1)
 The HTTP-request is parsed and one of the locally stored html pages is sent to the client.
