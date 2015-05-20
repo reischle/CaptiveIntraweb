@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Jag das Wumpus</title>
+<title>Hunt the Wumpus</title>
 <style type="text/css">
 body {
 	font-family:Arial, Helvetica, sans-serif;
@@ -220,7 +220,7 @@ function Game_updateArrows(i) {
 }
 
 function Game_win() {
-	if (confirm("Du hast GEWONNEN!!! Nochmal spielen?")) {
+	if (confirm("You won!!! One more game?")) {
 		game.init();
 	} else {
 		game.end();	
@@ -228,8 +228,8 @@ function Game_win() {
 }
 
 function Game_lose() {
-	this.feedback.addMessage("Du bist tot!");
-	if (confirm("Du hast verloren! Nochmal spielen?")) {
+	this.feedback.addMessage("You are dead!");
+	if (confirm("You lost! Play again?")) {
 		game.init();
 	} else {
 		game.end();
@@ -459,7 +459,7 @@ function buildBoard(x,y) {
 <body>
 <h1>Jag das Wumpus</h1>
 <p>Anzahl Pfeile: <span id="arrowsLeft">5</span></p>
-<div id="gameBoard">Schade. Dein Browser kann kein Javascript - Vielleicht ein Andermal.</div>
+<div id="gameBoard">What a pity. Your browser doesn not support JavaScript - Some other time, perhaps.</div>
 <form id="movementControls" onsubmit="return false;">
   <p>Laufen</p>
   <table>
