@@ -22,6 +22,14 @@ srv:listen(80,function(conn)
         -- print(method, url, vars)                          
     end
 
+	if url==nil then
+		url="index.htm"
+	end
+	
+	if url=="" then
+		url="index.htm"
+	end
+	
 	-- some ugly magic for Apple IOS Devices
 	if string.find(url, "/") ~= nil then
 	 --print ("Slash found")
@@ -61,13 +69,13 @@ srv:listen(80,function(conn)
 	return
     end
 	
-	if url==nil then
-		url="index.htm"
-	end
+	--if url==nil then
+	--	url="index.htm"
+	-- end
 	
-	if url=="" then
-		url="index.htm"
-	end
+	--if url=="" then
+	--	url="index.htm"
+	-- end
 	
 	local foundmatch = 0
 	local a = {'wumpus.htm','index.htm','about.htm','ttt.htm','instruct.htm','status.htm','kg-small.png'}
