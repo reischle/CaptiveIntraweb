@@ -22,6 +22,14 @@ srv:listen(80,function(conn)
         -- print(method, url, vars)                          
     end
 
+	if url==nil then
+		url="index.htm"
+	end
+	
+	if url=="" then
+		url="index.htm"
+	end
+	
 	-- some ugly magic for Apple IOS Devices
 	if string.find(url, "/") ~= nil then
 	 --print ("Slash found")
@@ -54,20 +62,20 @@ srv:listen(80,function(conn)
 	conn:send("<html><body><h1>System status</h1>")
 	conn:send("<p>Game files have been loaded " .. cnt .. " times.</p>")
 	conn:send("<p>Free memory: " .. node.heap() .. " Bytes</p>")
-	conn:send("<p>System uptime: " .. tmr.now()/1000000 .. " seconds</p>")
+	-- conn:send("<p>System uptime: " .. tmr.now()/1000000 .. " seconds </p>")
     conn:send("</body></html>")
 	conn:close()
 	 -- print ("<p>Indexpage has been viewed " .. cnt .. " times.</p>")
 	return
     end
 	
-	if url==nil then
-		url="index.htm"
-	end
+--	if url==nil then
+--		url="index.htm"
+--	end
 	
-	if url=="" then
-		url="index.htm"
-	end
+--	if url=="" then
+--		url="index.htm"
+--	end
 	
 	local foundmatch = 0
 	local a = {'wumpus.htm','index.htm','about.htm','ttt.htm','instruct.htm','status.htm','kg-small.png'}
