@@ -1,5 +1,8 @@
 --[[
+CaptiveIntraweb HTTP Server
 Modified by Andy Reischle
+Blog at: www.areresearch.net
+Youtube: www.youtube.com/AReResearch
 
 Based on 
 XChip's NodeMCU IDE
@@ -78,7 +81,7 @@ srv:listen(80,function(conn)
 --	end
 	
 	local foundmatch = 0
-	local a = {'wumpus.htm','index.htm','about.htm','ttt.htm','instruct.htm','status.htm','kg-small.png'}
+	local a = {'wumpus.htm','index.htm','about.htm','ttt.htm','instruct.htm','status.htm','kg-small.png','talk.htm','hovercraft.mp3','test.pdf'}
 	for _,v in pairs(a) do
 		if v == url then
 			foundmatch=1
@@ -105,11 +108,7 @@ end
         return
     end    
 
-   -- conn:send("<html><body><h1>NodeMCU IDE</h1>")
   
-    
-   -- conn:send("</body></html>")
-
   end)
   
   conn:on("sent",function(conn) 
@@ -120,8 +119,8 @@ end
             file.close()
             if line then
                 conn:send(line)
+				-- print ("sending:" .. DataToGet)
                 DataToGet = DataToGet + 512    
-
                 if (string.len(line)==512) then
                     return
                 end
@@ -145,5 +144,5 @@ cnt=cnt+1
 end
 
 	
-print("listening, free:", node.heap())
+print("HTTP Server is now listening. Free Heap:", node.heap())
 

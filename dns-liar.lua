@@ -27,3 +27,4 @@ function decodedns(dns_pl)
     i=i+1
   end
 end
+print("DNS Server is now listening. Free Heap:", node.heap())
